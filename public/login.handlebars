@@ -1,0 +1,55 @@
+<div class="main-container">
+  <h4>Login</h4>
+  <form class="form-container" action="/login" method="POST">
+    <div class="form-group input-row">
+      <div class="container">
+        <label for="userEmail">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userEmail"
+          name="userEmail"
+          value=""
+          placeholder="Ingrese su email"
+          style="width:50vw;boder-radius:8px;border:none;padding:4px;"
+        />
+      </div>
+      <div class="container">
+        <label for="userPassword">Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          id="userPassword"
+          name="userPassword"
+          value=""
+          placeholder="Ingrese su contraseña"
+          style="width:50vw;boder-radius:8px;border:none;padding:4px;"
+        />
+      </div>
+    </div>
+    <button
+      style="width:14vw;"
+      type="submit"
+      class="btn btn-primary button-submit"
+    >Ingresar</button>
+  </form>
+  <div class="registerText">
+    <p>No tenes cuenta? <a href="/register">Registrate ahora!</a></p>
+  </div>
+</div>
+
+<style>
+  .main-container { height: 100vh; justify-content: center; display: flex;
+  flex-direction: column; align-items: center; background-color: lightsalmon;
+  padding-top: 20px; } .form-container { margin-top: 2%; display: flex;
+  flex-direction: column;justify-content: center; align-items: center;
+  margin-top: 2%; } .container { display: flex; flex-direction: column;
+  margin-top: 2%;} .input-row { margin-top: 2%; margin-bottom: 5%; }
+  .button-submit { border: none; background-color: black; color: white; padding:
+  10px; border-radius: 8px; } .title{ margin-top: 2%; } .table-responsive{
+  margin-top: 2%; } .history-container{ margin-top: '2%'; } .messages-container{
+  background-color: #fff; padding: 20px; margin-top: 2%; border-radius: 8px;
+  margin-bottom: 2%; } .registerText{
+    margin-top: 4%;
+  }
+</style>

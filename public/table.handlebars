@@ -1,0 +1,94 @@
+<div class="main-container">
+    <h4>Productos</h4>
+    <div class="history-container container">
+        <h4 class="title">
+        Historial de productos
+        </h4>
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <tr style="color: yellow;">
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                </tr>
+                {{#if products}}
+                    {{#each products}}
+                    <tr class="tData">
+                        <td><p>{{productName}}</p></td>
+                        <td><p>{{productPrice}}</p></td>
+                        <td><img width="50" height="50" src={{productImage}} /></td>
+                    </tr>
+                    {{/each}}
+                {{else}}
+                    <tr class="tData">
+                    <td><p>No hay productos</p></td>
+                    <td>-</td>
+                    <td>-</td>
+                    </tr>
+                {{/if}}
+            </table>
+        </div>
+    </div>
+    <div class="history-container container">
+        <h4>
+            Centro de mensajes
+        </h4>
+        <form class="form-inline" onsubmit="return addMessage(this)" autocomplete="off">
+            <input type="text" required="true" id="email" class="form-control my-2 mr-2" placeholder="Email">
+            <input type="text" required="true" id="text" class="form-control my-2 mr-2" placeholder="Deja tu mensaje..">
+            <input class="btn btn-primary my-2" type="submit" value="Enviar">
+       </form>
+       <div class="messages-container" id="messages"></div>
+    </div>
+</div>
+
+<style>
+    .main-container {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: lightsalmon;
+        padding-top: 20px;
+    }
+
+    .form-container {
+        justify-content: center;
+        align-items: center;
+        margin-top: 2%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-row {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .button-submit {
+        border: none;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    .title{
+        margin-top: 2%;
+    }
+    .table-responsive{
+        margin-top: 2%;
+    }
+    .history-container{
+       margin-top: '2%';
+    }
+    .messages-container{
+        background-color: #fff;
+        padding: 20px;
+        margin-top: 2%;
+        border-radius: 8px;
+        margin-bottom: 2%;
+    }
+</style>

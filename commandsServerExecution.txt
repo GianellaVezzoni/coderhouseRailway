@@ -1,0 +1,35 @@
+- Ejecución del servidor en modo fork y cluster
+node server.js --port 8080
+node server.js --port 8080 --serverMode FORK
+node server.js --port 8080 --serverMode CLUSTER
+
+- Ejecución con forever
+forever start server.js -w --port 8080 --serverMode CLUSTER
+
+- Ejecución con PM2
+    Fork mode
+    pm2 start server.js --watch -- --port 8081
+    -------
+    cluster mode
+    pm2 start server.js --watch -i max -- --port 8081
+    -------
+    Mostrar procesos en modo lista
+    pm2 list  
+
+- ngnix
+    Redirección de todas las consultas a /api/randoms
+    forever start server.js -w --port 8081 --serverMode CLUSTER
+    forever start server.js -w --port 8080 --serverMode FORK
+    
+    ##Archivo de config en /ngnixFiles/nginx1.conf
+
+    Modificación de la configuración para que todas las consultas a la ruta /api/randoms 
+    sean redireccionadas al cluster de servidores que es gestionado por nginx. Éstas se van a ir repitiendo de forma 
+    equitativa escuchando en los puertos 8082, 8083, 8084 y 8085 respectivamente.
+
+    forever start server.js -w --port 8082 --serverMode FORK
+    forever start server.js -w --port 8083 --serverMode FORK
+    forever start server.js -w --port 8084 --serverMode FORK
+    forever start server.js -w --port 8085 --serverMode FORK
+    
+    ##Archivo de config en /ngnixFiles/nginx2.conf

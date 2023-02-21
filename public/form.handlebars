@@ -1,0 +1,148 @@
+<div class="main-container">
+    <div class="session-info-container">
+        <h4>Bienvenido {{user}}</h4>
+        <a class="log-out-button" href="/logout">Desloguear</a>
+    </div>
+    <h4>Cargar productos</h4>
+    <form class="form-container" onsubmit="return addProduct(this)">
+        <div class="form-group input-row">
+            <div class="container">
+                <label for="productName">Nombre producto</label>
+                <input type="text" class="form-control" id="productName" name="productName" value=""
+                    placeholder="Ingrese un nombre" style="width:100%;boder-radius:8px;border:none;padding:4px;" />
+            </div>
+        </div>
+        <div class="container">
+            <div class="form-group input-row">
+                <label for="productPrice">Precio</label>
+                <input type="number" class="form-control" id="productPrice" name="productPrice" value=""
+                    placeholder="$0,00" style="width:100%;boder-radius:8px;border:none;padding:4px;" />
+            </div>
+        </div>
+        <div class="container">
+            <div class="form-group input-row">
+                <label for="productImage">Foto del producto</label>
+                <input type="text" class="form-control" id="productImage" name="productImage" value=""
+                    placeholder="Imagen" style="width:100%;boder-radius:8px;border:none;padding:4px;" />
+                <small>Puedes elegir la url de la imagen que desees <a target="_blank"
+                        href='https://www.iconfinder.com/free_icons'>https://www.iconfinder.com/free_icons</a></small>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary button-submit">Guardar</button>
+    </form>
+    <div class="history-container container">
+        <h4 class="title">
+        Historial de productos
+        </h4>
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <tr style="color: yellow;">
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                </tr>
+                {{#if products}}
+                    {{#each products}}
+                    <tr class="tData">
+                        <td><p>{{productName}}</p></td>
+                        <td><p>${{productPrice}}</p></td>
+                        <td><img width="50" height="50" src={{productImage}} /></td>
+                    </tr>
+                    {{/each}}
+                {{else}}
+                    <tr class="tData">
+                    <td><p>No hay productos</p></td>
+                    <td>-</td>
+                    <td>-</td>
+                    </tr>
+                {{/if}}
+            </table>
+        </div>
+    </div>
+    <div class="history-container container">
+        <h4>
+            Centro de mensajes
+        </h4>
+        <form class="form-inline" onsubmit="return addMessage(this)" autocomplete="off">
+            <input type="text" required="true" id="name" class="form-control my-2 mr-2" placeholder="Nombre">
+            <input type="text" required="true" id="lastname" class="form-control my-2 mr-2" placeholder="Apellido">
+            <input type="number" required="true" id="age" class="form-control my-2 mr-2" placeholder="Edad">
+            <input type="text" required="true" id="alias" class="form-control my-2 mr-2" placeholder="Alias">
+            <input type="text" required="true" id="email" class="form-control my-2 mr-2" placeholder="Email">
+            <input type="text" required="true" id="text" class="form-control my-2 mr-2" placeholder="Deja tu mensaje..">
+            <input type="text" required="true" id="avatar" class="form-control my-2 mr-2" placeholder="Url de tu avatar">
+            <input class="btn btn-primary my-2" type="submit" value="Enviar">
+       </form>
+       <div class="messages-container" id="messages"></div>
+    </div>
+</div>
+
+<style>
+    .main-container {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: lightsalmon;
+        padding-top: 20px;
+    }
+
+    .form-container {
+        justify-content: center;
+        align-items: center;
+        margin-top: 2%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-row {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .button-submit {
+        border: none;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    .title{
+        margin-top: 2%;
+    }
+    .table-responsive{
+        margin-top: 2%;
+    }
+    .history-container{
+       margin-top: '2%';
+    }
+    .messages-container{
+        background-color: #fff;
+        padding: 20px;
+        margin-top: 2%;
+        border-radius: 8px;
+        margin-bottom: 2%;
+    }
+    .session-info-container{
+        background-color: #000;
+        width: 80%;
+        margin-bottom: 4%;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        padding: 7px 26px;
+        align-items: center;
+        color: #FFF;
+    }
+    .log-out-button{
+        text-decoration: none;
+        color: #000;
+        background-color: lightsalmon;
+        padding: 3px 10px;
+        border-radius: 10px;
+        align-self: center;
+    }
+</style>
