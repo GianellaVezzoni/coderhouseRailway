@@ -17,7 +17,6 @@ import ContenedorMensajes from "./containers/messages/ContenedorMensajes.js";
 import ContenedorMensajesNormalized from "./containers/messages/ContenedorMensajesNormalized.js";
 import Contenedor from "./containers/products/Contenedor.js";
 import { mongoUrl, optionsSqlite, options } from "./config/db.js";
-import { puerto } from "./config/argsParser.js";
 import authRouter from './routes/auth.js';
 import productRouter from './routes/products.js';
 import infoRoutes from "./routes/info.js";
