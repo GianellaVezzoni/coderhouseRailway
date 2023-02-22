@@ -4,7 +4,7 @@ dotenv.config();
 export const options = {
   client: "mysql",
   connection: {
-    host: "localhost",
+    host: "0.0.0.0",
     user: "root",
     password: "",
     database: "ecommerce",
