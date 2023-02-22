@@ -19,4 +19,4 @@ export const optionsSqlite = {
   useNullAsDefault: true,
 };
 
-export const mongoUrl = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPASSWORD}@desafio24.bmolsth.mongodb.net/?retryWrites=true&w=majority`;
+export const mongoUrl = process.env.MONGOURL
