@@ -1,16 +1,11 @@
 import { Strategy as LocalStrategy } from "passport-local";
 import passport from "passport";
-import knex from "knex";
 import express from "express";
 import { comparePasswords } from "../utils/encryptPassword.js";
 import SessionsController from "../controllers/SessionsController.js";
-import Contenedor from "../containers/products/Contenedor.js";
-import { options } from "../config/db.js";
 
 const authRouter = express.Router();
 const mongoSession = new SessionsController();
-const knexInstance = knex(options);
-const sql = new Contenedor(knexInstance);
 
 //Passport
 
@@ -79,15 +74,8 @@ authRouter.get("/", async (req, res) => {
   if (req.isAuthenticated()) {
     req.session.user = req.session.passport.user;
     const user = req.session.user;
-    sql.listProducts().then((prod) => {
-      let products = [];
-      products = prod.map((item) => ({
-        productName: item?.productName,
-        productPrice: item?.productPrice,
-        productImage: item?.productImage,
-      }));
-      res.render("form", { products, user });
-    });
+    const products = [];
+    res.render("form", { products, user })
   } else {
     res.render("login");
   }
